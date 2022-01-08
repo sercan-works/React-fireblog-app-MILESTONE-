@@ -15,7 +15,7 @@ import logo from '../assets/logo.png'
 const pages = ['ST-BLOG'];
 const settings = ['Profile', 'Account', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -142,4 +142,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Navbar;

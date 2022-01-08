@@ -1,8 +1,17 @@
-import ResponsiveAppBar from "./components/Navbar";
-
+import MediaCard from "./components/Card";
+import Navbar from "./components/Navbar";
+import AuthContextProvider from "./contexts/AuthContext";
+import AppRouter from './app-router/Router'
 function App() {
   return (
-    <ResponsiveAppBar/>
+    <>
+    <AuthContextProvider>
+      <AppRouter/>
+    </AuthContextProvider>
+    <Navbar/>
+    <MediaCard/>
+    </>
+    
   );
 }
 
