@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../assets/logo.png'
-const pages = ['ST-BLOG'];
+const pages = [''];
 const settings = ['Create Blog', 'Profile', 'Account', 'Logout'];
 
 const Navbar = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <img src={logo} alt="log" style={{width:'100px'}}/>
+            <a href ="/"><img src={logo} alt="log" style={{width:'100px'}}/></a>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -57,44 +57,22 @@ const Navbar = () => {
               color="inherit"
             >
                 <a href="/"><img src={logo} alt="log" style={{width:'50px'}}/></a>
-              {/* <MenuIcon /> */}
+               {/* <MenuIcon /> */}
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+
+     
           </Box>
+          
           <Typography
             variant="h6"
-            noWrap
+           noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            sx={{ flexGrow: 1, display:'flex', md: 'none'  }}
           >
-            {/* <img src={logo} alt="log" style={{width:'50px'}}/> */}
-                ST-BLOG
+               ST blog
           </Typography>
           
-          {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -104,7 +82,7 @@ const Navbar = () => {
                 {page}
               </Button>
             ))}
-          </Box> */}
+          </Box> 
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -138,13 +116,7 @@ const Navbar = () => {
               <MenuItem>
               <Typography textAlign="center">Log Out</Typography>
               </MenuItem>
-             
-              
-              {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
+            
             </Menu>
           </Box>
         </Toolbar>

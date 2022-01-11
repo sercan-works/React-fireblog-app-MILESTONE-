@@ -1,61 +1,84 @@
+import {
+  Button,
+  FormControl,
+  TextareaAutosize,
+  TextField,
+} from "@mui/material";
+import React, { useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { deleteContent, updateContent } from "../helpers/firebaseConnect";
 
-
-import { Button, FormControl, TextareaAutosize, TextField } from '@mui/material';
-import React, { useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
-import { updateContent } from '../helpers/firebaseConnect';
-
-
+const initialValues = { title: "", body: "", image: "", author: "" };
 const Edit = () => {
-    //const {contentId} = useParams();
-    const location = useLocation();
-    const content = location.state.content;
+  const navigate = useNavigate();  
+  const { contentId } = useParams();
+  const location = useLocation();
 
-    const [title, setTitle] = useState("d")
-    
+  const { title, author, body, image } = location.state.content;
+  const [editedcontent, setEditedContent] = useState(initialValues);
 
+  console.log("edit content=", title, author, image, body);
 
-    //console.log(contentId);
-    return (
-        <div>
-            Edit sayfası {content.id}
-            <FormControl>
-            <TextField 
-            id="outlined-basic" 
-            name="title"
-            label="Title" 
-            variant="outlined" 
-            defaultValue = {content.title}
-            onChange={null}
-             />
-            <TextField 
-            id="outlined-basic" 
-            name="image"
-            label="Image URL" 
-            variant="outlined"
-            defaultValue={content.image}
-            onChange={null}
-             />
-            <TextareaAutosize
-                maxRows={20}
-                name="body"
-                aria-label=""
-                placeholder="Please write something..."
-                style={{ width: 400, height: 200 }}
-                defaultValue={content.body}
-                onChange={null}
-            />
-            <Button 
-            variant="contained"
-             onClick={()=>updateContent(
-                 content.title,
-                 content.image,
-                 content.body
-             )}
-             >Send</Button>
-        </FormControl>
-        </div>
-    )
-}
+  console.log("Edited Content",editedcontent);
 
-export default Edit
+  const handleInputChange = (e) => {
+    const {name,value} = e.target
+    setEditedContent({ title, author, body, image ,[name]:value})
+
+  };
+
+  // const handleInputChange = (id,title,body,image,author)=>{
+  //     setEditedContent({id,title,body,image,author});
+  // }
+  const handleFormSubmit = () => {
+    updateContent(editedcontent);
+    deleteContent(contentId);
+    //navigate("/");
+  };
+
+  return (
+    <div>
+      Edit sayfası {contentId}
+      <FormControl>
+        <TextField
+          id="outlined-basic"
+          name="title"
+          label="Title"
+          variant="outlined"
+          defaultValue={title}
+          onChange={handleInputChange}
+        />
+        <TextField
+          id="outlined-basic"
+          name="image"
+          label="Image URL"
+          variant="outlined"
+          defaultValue={image}
+          onChange={handleInputChange}
+        />
+        <TextareaAutosize
+          maxRows={20}
+          name="body"
+          aria-label=""
+          placeholder="Please write something..."
+          style={{ width: 400, height: 200 }}
+          defaultValue={body}
+          onChange={handleInputChange}
+        />
+        <Button
+          variant="contained"
+          onClick={() =>
+            updateContent(
+              // content.title,content.image,content.body
+              handleFormSubmit()
+            )
+          }
+        >
+          UPDATE
+        </Button>
+      </FormControl>
+    </div>
+  );
+};
+
+export default Edit;

@@ -7,13 +7,7 @@ const initialValues = {title:"",body:"",image:""}
 
 const NewBlog = () => {
      const [content, setContent] = useState(initialValues)
-    // const baseURL = "http://localhost:5000/contents";
-
-    //Send Content
-    // const addContent = async () => {
-    //     const res = await axios.post(baseURL)
-    // }
-
+   
     const handleInputChange = (e) => {
         const {name,value} = e.target
         setContent({...content,[name]:value})

@@ -3,7 +3,8 @@ import BlogCard from '../components/BlogCard'
 
 const Main = () => {
     return (
-        
+
+            
             <BlogCard/>
             
         
