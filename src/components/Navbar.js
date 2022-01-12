@@ -1,24 +1,27 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../assets/logo.png'
-import { Link, NavLink, Route, Router, Routes, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 const pages = [''];
 const settings = ['Create Blog', 'Profile', 'Account', 'Logout'];
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const{currentUser} = useContext(AuthContext);
+
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -86,11 +89,61 @@ const Navbar = () => {
               </Button>
             ))}
           </Box>
+          
+          {/* USER MENU CURRENT USER CONTROL */}
+          {currentUser ? (
+                    <Box sx={{ flexGrow: 0 }}>
+                    <Tooltip title="Open settings">
+                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar 
+                        alt={currentUser.displayName}
+                        src="/static/images/avatar/2.jpg" />
+                      </IconButton>
+                    </Tooltip>
+                    <Menu
+                      sx={{ mt: '45px' }}
+                      id="menu-appbar"
+                      anchorEl={anchorElUser}
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      open={Boolean(anchorElUser)}
+                      onClose={handleCloseUserMenu}
+                    >
+                      <MenuItem>
+                        
+                          <Typography textAlign="center" onClick={()=>navigate("/new-blog")}>Create Blog</Typography>
+                       
+                         
+                      </MenuItem> 
+        
+                      <MenuItem>
+                       
+                          <Typography textAlign="center" onClick={()=>navigate("/profile")}>Profile</Typography>
+                       
+                      </MenuItem>
+        
+                      <MenuItem>
+                        <Typography textAlign="center">Log Out</Typography>
+                      </MenuItem>
+        
+                    </Menu>
+                  </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+                ):(
+
+                  <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Semy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar 
+                alt={null}
+                src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -111,24 +164,32 @@ const Navbar = () => {
             >
               
               <MenuItem>
-                <Link to='/new-blog'>
-                  <Typography textAlign="center">Create Blog</Typography>
+                
+                <Typography textAlign="center" onClick={()=>navigate("/login")}>Login</Typography>
+             
                
-                  </Link>
-              </MenuItem> 
+            </MenuItem>
+            <MenuItem>
+                
+                <Typography textAlign="center" onClick={()=>navigate("/register")}>Register</Typography>
+             
+               
+            </MenuItem>
 
-              <MenuItem>
-                <Link to="/profile">
-                  <Typography textAlign="center">Profile</Typography>
-                </Link>
-              </MenuItem>
 
-              <MenuItem>
-                <Typography textAlign="center">Log Out</Typography>
-              </MenuItem>
+              {/* <MenuItem>
+                
+                  <Typography textAlign="center" onClick={()=>navigate("/new-blog")}>Create Blog</Typography>
+               
+                 
+              </MenuItem>  */}
 
             </Menu>
           </Box>
+                )}
+                
+        {/* CURRENT USER CONTROL END************ */}
+          
         </Toolbar>
       </Container>
     </AppBar>

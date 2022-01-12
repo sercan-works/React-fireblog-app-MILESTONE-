@@ -27,7 +27,7 @@ const BlogCard = () => {
 <Box sx={{flexGrow: 1, m:2,boxShadow: 6,}}>
 <Grid  container spacing={2} sx={{alignContent: 'space-between',flexGrow: 1, m:3}}>
       {contentList?.map((content) => (
-        <Card sx={{ maxWidth: 300, m:1, }} key={content.id}>
+        <Card sx={{ maxWidth: 300, m:1,boxShadow: 6, }} key={content.id}>
           <CardMedia
             component="img"
             height="140"
@@ -35,7 +35,7 @@ const BlogCard = () => {
             alt={content.image?.slice(4, 15)}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" backgroundColor="">
               {content.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
