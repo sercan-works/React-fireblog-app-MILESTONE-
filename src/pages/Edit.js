@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   FormControl,
   TextareaAutosize,
@@ -27,19 +28,17 @@ const Edit = () => {
 
   };
 
-  // const handleInputChange = (id,title,body,image,author)=>{
-  //     setEditedContent({id,title,body,image,author});
-  // }
+
   const handleFormSubmit = () => {
     updateContent(editedcontent);
     deleteContent(contentId);
-    //navigate("/");
+  
   };
 
   return (
     <div>
-      Edit sayfası {contentId}
-      <FormControl>
+      <Box sx={{m:2,p:2, display: 'flex',justifyContent: 'center'}}>
+      <FormControl sx={{boxShadow:10,}}>
         <TextField
           id="outlined-basic"
           name="title"
@@ -77,6 +76,7 @@ const Edit = () => {
           UPDATE
         </Button>
       </FormControl>
+      </Box>
     </div>
   );
 };

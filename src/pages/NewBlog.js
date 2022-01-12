@@ -1,4 +1,4 @@
-import { Button, FormControl, TextareaAutosize, TextField } from "@mui/material";
+import { Box, Button, Container, FormControl, TextareaAutosize, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { addContent} from "../helpers/firebaseConnect";
@@ -21,14 +21,17 @@ const NewBlog = () => {
     
     return (
         <div>
-        <FormControl>
-            <TextField 
+            
+        <Box sx={{m:2,p:2, display: 'flex',justifyContent: 'center'}}>
+        <FormControl sx={{boxShadow:5,}}>
+            <TextField
             id="outlined-basic" 
             name="title"
             label="Title" 
             variant="outlined" 
             value = {content.title}
             onChange={handleInputChange}
+            
              />
             <TextField 
             id="outlined-basic" 
@@ -52,6 +55,8 @@ const NewBlog = () => {
              onClick={handleFormSubmit}
              >Send</Button>
         </FormControl>
+        </Box>  
+         
         </div>
     );
 };

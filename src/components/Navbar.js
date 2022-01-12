@@ -12,10 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../assets/logo.png'
+import { Link, NavLink, Route, Router, Routes, useNavigate } from 'react-router-dom';
+
 const pages = [''];
 const settings = ['Create Blog', 'Profile', 'Account', 'Logout'];
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -44,7 +47,7 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <a href ="/"><img src={logo} alt="log" style={{width:'100px'}}/></a>
+            <a href="/"><img src={logo} alt="log" style={{ width: '100px' }} /></a>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -56,23 +59,23 @@ const Navbar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-                <a href="/"><img src={logo} alt="log" style={{width:'50px'}}/></a>
-               {/* <MenuIcon /> */}
+              <a href="/"><img src={logo} alt="log" style={{ width: '50px' }} /></a>
+              {/* <MenuIcon /> */}
             </IconButton>
 
-     
+
           </Box>
-          
+
           <Typography
             variant="h6"
-           noWrap
+            noWrap
             component="div"
-            sx={{ flexGrow: 1, display:'flex', md: 'none'  }}
+            sx={{ flexGrow: 1, display: 'flex', md: 'none' }}
           >
-               ST blog
+            ST blog
           </Typography>
-          
-           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -82,7 +85,7 @@ const Navbar = () => {
                 {page}
               </Button>
             ))}
-          </Box> 
+          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -106,17 +109,24 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              
               <MenuItem>
-              <Typography textAlign="center">Create Blog</Typography>
+                <Link to='/new-blog'>
+                  <Typography textAlign="center">Create Blog</Typography>
+               
+                  </Link>
+              </MenuItem> 
+
+              <MenuItem>
+                <Link to="/profile">
+                  <Typography textAlign="center">Profile</Typography>
+                </Link>
               </MenuItem>
 
               <MenuItem>
-              <Typography textAlign="center">Profile</Typography>
+                <Typography textAlign="center">Log Out</Typography>
               </MenuItem>
-              <MenuItem>
-              <Typography textAlign="center">Log Out</Typography>
-              </MenuItem>
-            
+
             </Menu>
           </Box>
         </Toolbar>

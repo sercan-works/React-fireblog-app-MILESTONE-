@@ -6,10 +6,13 @@ import Edit from '../pages/Edit'
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import NewBlog from '../pages/NewBlog';
 import Details from '../pages/Details';
+import Navbar from '../components/Navbar';
+import Profile from '../pages/Profile';
 
 const AppRouter = () =>{
     return(
         <Router>
+            <Navbar/>
             <Routes>
                 <Route path='/' element={<Main/>} />
                 <Route path='/login' element={<Login/>} />
@@ -17,6 +20,7 @@ const AppRouter = () =>{
                 <Route path='/new-blog' element={<NewBlog/>} />
                 <Route path="/detail/:contentId" element={<Details/>}/>
                 <Route path="/edit/:contentId" element={<Edit/>}/>
+                <Route path="/profile" element={<Profile/>}/>
             </Routes>
         </Router>
     )
