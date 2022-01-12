@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -17,10 +17,12 @@ import {
 } from "react-router-dom";
 import Details from "../pages/Details";
 import { Box, Collapse, Grid } from "@mui/material";
+import { AuthContext } from "../contexts/AuthContext";
 
 const BlogCard = () => {
   const { contentList } = useFetch();
   const navigate = useNavigate();
+  const{currentUser} = useContext(AuthContext);
 
   return (
     <div>
@@ -41,7 +43,7 @@ const BlogCard = () => {
             <Typography variant="body2" color="text.secondary">
               <p>{content.body?.slice(0, 150)}</p>
             </Typography>
-            <Typography>Author: </Typography>
+            <Typography>Author:{content.author} </Typography>
           </CardContent>
           <CardActions>
             {/* <Button size="small">Like</Button> */}

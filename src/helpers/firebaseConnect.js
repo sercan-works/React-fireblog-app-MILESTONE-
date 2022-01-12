@@ -12,7 +12,8 @@ import {
 } from "firebase/database";
 import { useEffect, useState } from "react";
 
-export const addContent = (content) => {
+export const addContent = (content,currentUser) => {
+
   const db = getDatabase();
   const contentRef = ref(db, "content");
   const newContentRef = push(contentRef);
@@ -20,7 +21,7 @@ export const addContent = (content) => {
     title: content.title,
     image: content.image,
     body: content.body,
-    author: "",
+    author: currentUser.displayName,
     like: null,
   });
   console.log("veri eklendi");

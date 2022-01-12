@@ -40,7 +40,10 @@ const Details = () => {
     <center>
     <button onClick={()=>navigate(`/edit/${contentId}`,{state:{content}})}>Edit</button>
             <button
-            onClick={()=>deleteContent(contentId)}
+            onClick={()=>{
+              deleteContent(contentId)
+              navigate("/")
+            }}
             >Delete</button>
            </center>
         </div>

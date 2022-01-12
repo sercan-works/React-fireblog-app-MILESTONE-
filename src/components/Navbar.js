@@ -13,6 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import logo from '../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
+import { firebase } from '../helpers/firebase';
+import { signOut } from 'firebase/auth';
 
 const pages = [''];
 const settings = ['Create Blog', 'Profile', 'Account', 'Logout'];
@@ -39,7 +41,10 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const signOutFunc = async()=>{
+    await signOut(firebase);
+    navigate("/");
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -130,7 +135,9 @@ const Navbar = () => {
                       </MenuItem>
         
                       <MenuItem>
-                        <Typography textAlign="center">Log Out</Typography>
+                        <Typography textAlign="center"
+                        onClick={()=>signOutFunc()}
+                        >Log Out</Typography>
                       </MenuItem>
         
                     </Menu>
