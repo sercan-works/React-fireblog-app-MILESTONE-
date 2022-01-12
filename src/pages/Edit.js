@@ -32,6 +32,7 @@ const Edit = () => {
   const handleFormSubmit = () => {
     updateContent(editedcontent);
     deleteContent(contentId);
+    navigate("/");
   
   };
 
