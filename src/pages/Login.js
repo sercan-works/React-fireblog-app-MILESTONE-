@@ -28,7 +28,8 @@ const Login = () => {
             id="outlined-basic" 
             name="email"
             label="Email" 
-            variant="outlined" 
+            variant="outlined"
+            sx={{m:1}} 
             onChange={(e)=>setEmail(e.target.value)}
             
              />
@@ -37,11 +38,13 @@ const Login = () => {
             name="password"
             label="Password" 
             variant="outlined"
+            sx={{m:1}} 
             onChange={(e)=>setPass(e.target.value)}
              />
           
             <Button 
             variant="contained"
+            sx={{m:1}} 
              onClick={handleSubmit}
              >LOGIN</Button>
         </FormControl>

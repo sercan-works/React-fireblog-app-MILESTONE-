@@ -18,28 +18,35 @@ const Edit = () => {
   const { title, author, body, image } = location.state.content;
   const [editedcontent, setEditedContent] = useState(initialValues);
 
-  console.log("edit content=", title, author, image, body);
+  //console.log("edit content=", title, author, image, body);
 
-  console.log("Edited Content",editedcontent);
-
+  //console.log("Edited Content",editedcontent);
+  const [counter, setCounter] = useState(0)
   const handleInputChange = (e) => {
+    setCounter(counter + 1)
     const {name,value} = e.target
     setEditedContent({ title, author, body, image ,[name]:value})
 
   };
 
+ 
+  //console.log(counter);
 
   const handleFormSubmit = () => {
+   if(counter === 0){
+      alert("KAYIT GÜNCELLENMEDİ");
+   }else{
     updateContent(editedcontent);
     deleteContent(contentId);
     navigate("/");
-  
+    alert("KAYIT GÜNCELLENDİ");
+   }
   };
 
   return (
     <div>
       <Box sx={{m:2,p:2, display: 'flex',justifyContent: 'center'}}>
-      <FormControl sx={{boxShadow:10,}}>
+      <FormControl sx={{boxShadow:10,mt:2}}>
         <TextField
           id="outlined-basic"
           name="title"
@@ -54,6 +61,7 @@ const Edit = () => {
           label="Image URL"
           variant="outlined"
           defaultValue={image}
+          sx={{mt:2}}
           onChange={handleInputChange}
         />
         <TextareaAutosize
@@ -63,9 +71,12 @@ const Edit = () => {
           placeholder="Please write something..."
           style={{ width: 400, height: 200 }}
           defaultValue={body}
+          sx={{mt:2}}
           onChange={handleInputChange}
         />
         <Button
+          sx={{mt:2}}
+          color="success"
           variant="contained"
           onClick={() =>
             updateContent(
