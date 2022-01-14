@@ -26,7 +26,6 @@ const Edit = () => {
     setCounter(counter + 1)
     const {name,value} = e.target
     setEditedContent({ title, author, body, image ,[name]:value})
-
   };
 
  
