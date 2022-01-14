@@ -9,23 +9,14 @@ import Paper from "@mui/material/Paper";
 import { useFetch } from "../helpers/firebaseConnect";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import {
-  Link,
-  Navigate,
-  Route,
-  useLocation,
   useNavigate,
-  useParams,
 } from "react-router-dom";
-import Details from "../pages/Details";
 import {
-  Box,
-  Collapse,
+
   Grid,
-  IconButton,
-  ImageList,
-  ImageListItem,
+ 
   InputAdornment,
-  Stack,
+ 
   TextField,
 } from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext";
