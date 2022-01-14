@@ -1,10 +1,10 @@
-import { Box, Button, Container, FormControl, TextareaAutosize, TextField } from "@mui/material";
-import axios from "axios";
+import { Box, Button, Container, FormControl, Paper, TextareaAutosize, TextField, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
 
-import { addContent} from "../helpers/firebaseConnect";
+import { addContent, updateContent} from "../helpers/firebaseConnect";
 
 const initialValues = {title:"",body:"",image:"",author:""}
 
@@ -29,47 +29,85 @@ const NewBlog = () => {
 
     
     return (
-        <div>
-            
-        <Box sx={{m:2,p:2, display: 'flex',justifyContent: 'center'}}>
-        <FormControl sx={{boxShadow:5,}}>
-            <TextField
-            id="outlined-basic" 
+        <div align="center">
+      <ToastContainer />
+      <Box sx={{ m: 2,display: "inline-block", justifyContent: "center" }}>
+        
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{
+            flexGrow: 1,
+            fontSize:'45px',
+            display: "flex",
+            md: "none",
+            cursor: "pointer",
+            justifyContent: "center",
+      
+          }}
+          fontFamily="cursive"
+        >
+          <p style={{ color: "#ff5b45", }}>||</p>
+          <p style={{ color: "#a63dfc" }}>New</p>
+          <p style={{ color: "#3dfc9d" }}>Blog</p>
+        </Typography>
+      </Box>
+
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Paper
+          variant="outlined"
+          sx={{ bgcolor: "#ba7d99", postion: "absolute", width: "5px" }}
+        ></Paper>
+        <FormControl sx={{ boxShadow: 5}}>
+          <TextField
+            id="outlined-basic"
             name="title"
-            label="Title" 
-            variant="outlined" 
-            sx={{m:1}}
-            value = {content.title}
-            onChange={handleInputChange}
-            
-             />
-            <TextField 
-            id="outlined-basic" 
-            name="image"
-            label="Image URL" 
+            label="Title"
             variant="outlined"
-            sx={{m:1}}
+            sx={{ m: 1, width:[400,600,600]}}
+            value={content.title}
+            onChange={handleInputChange}
+          />
+          <TextField
+            id="outlined-basic"
+            name="image"
+            label="Image URL"
+            variant="outlined"
+            sx={{ m: 1 }}
             value={content.image}
             onChange={handleInputChange}
-             />
-            <TextareaAutosize
-                maxRows={20}
-                name="body"
-                aria-label=""
-                placeholder="Please write something..."
-                style={{ width: 400, height: 200,margin:2 }}
-                
-                value={content.body}
-                onChange={handleInputChange}
-
-            />
-           
-            <Button 
+          />
+             <TextField
+            id="outlined-basic"
+            name="body"
+            label="Content"
+            multiline
+            rows={10}
+            //variant="outlined"
+            sx={{ m: 1}}
+            value={content.body}
+            onChange={handleInputChange}
+          />
+          <Button 
+         
+          sx={{ m: 1 }}
+            color="success"
             variant="contained"
-             onClick={handleFormSubmit}
-             >Send</Button>
+            onClick={() =>
+              updateContent(
+                // content.title,content.image,content.body
+                handleFormSubmit()
+              )}
+          >
+            SAVE
+          </Button>
         </FormControl>
-        </Box>  
+        <Paper
+          variant="outlined"
+          sx={{ bgcolor: "#b39029", postion: "absolute", width: "5px" }}
+        ></Paper>
+      </Box>
          
         </div>
     );

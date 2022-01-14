@@ -4,6 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
+import logo from "../assets/logo.png";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { useFetch } from "../helpers/firebaseConnect";
@@ -45,7 +46,9 @@ const BlogCard = () => {
   // console.log(contentList);
 
   return (
-    <div>
+    <div style={{
+      backgroundImage:`url(${logo})`
+    }}>
      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         
                 {contentList?.map((content) => (
@@ -57,7 +60,9 @@ const BlogCard = () => {
                       m: 1,
                       boxShadow: 6,
                       bgcolor: `${bgcolor}`,
+                      
                     }}
+                    fontFamily="cursive"
                     key={content.id}
                   >
                     <CardMedia
@@ -72,10 +77,11 @@ const BlogCard = () => {
                         variant="h5"
                         component="div"
                         backgroundColor=""
+                        fontFamily="cursive"
                       >
                         {content.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.secondary"fontFamily="cursive">
                         <p>{content.body?.slice(0, 150)}</p>
                       </Typography>
                       <Typography>
@@ -83,6 +89,7 @@ const BlogCard = () => {
                           disabled
                           id="input-with-icon-textfield"
                           label=""
+                          fontFamily="cursive"
                           value={content.author}
                           InputProps={{
                             startAdornment: (

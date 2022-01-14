@@ -80,6 +80,7 @@ const Navbar = () => {
               variant="h6"
               noWrap
               component="div"
+              fontSize={25}
               sx={{ flexGrow: 1, display: "flex", md: "none",cursor: 'pointer' }}
               fontFamily="cursive"
               onClick={()=>navigate("/")}
@@ -132,14 +133,17 @@ const Navbar = () => {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem>
-                  <Typography variant="dashed" color="orange" sx={{}}>
+                  <Typography variant="dashed" color="orange" fontFamily="cursive"  sx={{}}>
                     {currentUser.displayName}
                   </Typography>
                 </MenuItem>
                 <Divider />
-                <MenuItem>
+                          
+                <MenuItem fontFamily="cursive">
                   <Typography
                     textAlign="center"
+                    fontFamily="cursive"
+
                     onClick={() => navigate("/new-blog")}
                   >
                     Create Blog
@@ -149,14 +153,15 @@ const Navbar = () => {
                 <MenuItem>
                   <Typography
                     textAlign="center"
+                    fontFamily="cursive"
                     onClick={() => navigate("/profile")}
                   >
                     Profile
                   </Typography>
                 </MenuItem>
 
-                <MenuItem>
-                  <Typography textAlign="center" onClick={() => signOutFunc()}>
+                <MenuItem fontFamily="cursive">
+                  <Typography textAlign="center" fontFamily="cursive" onClick={() => signOutFunc()}>
                     Log Out
                   </Typography>
                 </MenuItem>
@@ -188,6 +193,7 @@ const Navbar = () => {
                 <MenuItem>
                   <Typography
                     textAlign="center"
+                    fontFamily="cursive"
                     onClick={() => navigate("/login")}
                   >
                     Login
@@ -196,6 +202,7 @@ const Navbar = () => {
                 <MenuItem>
                   <Typography
                     textAlign="center"
+                    fontFamily="cursive"
                     onClick={() => navigate("/register")}
                   >
                     Register
