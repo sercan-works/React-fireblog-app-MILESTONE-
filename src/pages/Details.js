@@ -28,11 +28,11 @@ const Details = () => {
   };
 
   useEffect(() => {
-    if (!currentUser) {
-      navigateLogin();
-    }else if(currentUser && currentUser.displayName !== content.author){
-      setNone('none');
-    }
+    // if (!currentUser) {
+    //   navigateLogin();
+    // }else if(currentUser && currentUser.displayName !== content.author){
+    //   setNone('none');
+    // }
 
   });
 
