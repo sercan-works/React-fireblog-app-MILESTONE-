@@ -63,15 +63,7 @@ const NewBlog = () => {
                 onChange={handleInputChange}
 
             />
-             <TextField 
-            id="outlined-basic" 
-            name="author"
-            label="Creator" 
-            variant="outlined"
-            value={null}
-            onChange={handleInputChange}
-            sx={{m:1}}
-             />
+           
             <Button 
             variant="contained"
              onClick={handleFormSubmit}

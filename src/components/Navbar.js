@@ -15,6 +15,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import { firebase } from '../helpers/firebase';
 import { signOut } from 'firebase/auth';
+import { Divider } from '@mui/material';
 
 const pages = [''];
 const settings = ['Create Blog', 'Profile', 'Account', 'Logout'];
@@ -99,7 +100,7 @@ const Navbar = () => {
           {currentUser ? (
                     <Box sx={{ flexGrow: 0 }}>
                     <Tooltip title="Open settings">
-                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0,color:'orange' }}>
                         <Avatar 
                         alt={currentUser.displayName}
                         src="/static/images/avatar/2.jpg" />
@@ -121,6 +122,16 @@ const Navbar = () => {
                       open={Boolean(anchorElUser)}
                       onClose={handleCloseUserMenu}
                     >
+                       <MenuItem>
+                        
+                        <Typography 
+                        variant='dashed'
+                        color='orange'
+                        sx={{}}>{currentUser.displayName}</Typography>
+                     
+                       
+                    </MenuItem> 
+                    <Divider />
                       <MenuItem>
                         
                           <Typography textAlign="center" onClick={()=>navigate("/new-blog")}>Create Blog</Typography>
