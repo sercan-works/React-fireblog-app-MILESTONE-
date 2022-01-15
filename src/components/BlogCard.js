@@ -57,7 +57,8 @@ const BlogCard = () => {
                     sx={{
                       maxWidth: 300,
                       height:400,
-                      m: 1,
+                      m:1,
+                      mx: "auto",
                       boxShadow: 6,
                       bgcolor: `${bgcolor}`,
                       
