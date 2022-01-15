@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
-// minified version is also included
-// import 'react-toastify/dist/ReactToastify.min.css';
+import { AuthContext } from '../contexts/AuthContext';
 
-export const errorMessage = ()=>{
+function Toastify(){
+  const { currentUser } = useContext(AuthContext);
+  const { toastMessage } = useContext(AuthContext);
+ 
+  if(currentUser){
+    toast(toastMessage)
     
-    return(
-        null
-    )
-}
+  }
+  
 
 
-function Test(){
   const notify = () => toast("Wow so easy !");
 
   return (
     <div>
-      <button onClick={notify}>Notify !</button>
+       {/* <button onClick={notify}>Notify !</button>  */}
       <ToastContainer />
     </div>
   );
-}
 
-export default Test
+  }
+export default Toastify

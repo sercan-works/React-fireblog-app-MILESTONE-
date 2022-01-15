@@ -11,12 +11,14 @@ import Profile from '../pages/Profile';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import Footer from '../components/Footer';
+import Toastify from '../helpers/toastify';
 
 const AppRouter = () =>{
  
 
     return(
         <Router>
+            <Toastify/>
             <Navbar/>
             <Routes>
                 <Route path='/' element={<Main/>} />

@@ -19,11 +19,13 @@ import { firebase } from "../helpers/firebase";
 import logo from "../assets/logo.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Toastify, { toastMessage } from "../helpers/toastify";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
+  const [msg,setMsg] = useState("Başarılı");
   const provider = new GoogleAuthProvider();
 
   const handleSubmitGoogle = () => {
@@ -40,6 +42,8 @@ const Login = () => {
         const auth = getAuth();
         signInWithRedirect(auth, provider);
         navigate("/");
+        
+      
       })
       .catch((error) => {
         // Handle Errors here.

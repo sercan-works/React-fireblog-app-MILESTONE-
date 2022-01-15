@@ -1,12 +1,14 @@
-import React from 'react'
-import Test from '../components/test'
+import React, { useContext } from 'react'
+import { AuthContext } from '../contexts/AuthContext';
+
 
 const Profile = () => {
+    const { currentUser } = useContext(AuthContext);
     return (
         <div>
 
             <h1>Profile Page</h1>
-            <Test/>
+            {currentUser.displayName}
         </div>
     )
 }

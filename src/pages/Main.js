@@ -1,15 +1,14 @@
-import React from 'react'
-import BlogCard from '../components/BlogCard'
+import React from "react";
+import BlogCard from "../components/BlogCard";
+
 
 const Main = () => {
-    
-    return (
+  return (
+    <>
+     
+      <BlogCard />
+    </>
+  );
+};
 
-            
-            <BlogCard/>
-            
-        
-    )
-}
-
-export default Main
+export default Main;
