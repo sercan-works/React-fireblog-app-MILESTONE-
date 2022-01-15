@@ -10,6 +10,7 @@ import Navbar from '../components/Navbar';
 import Profile from '../pages/Profile';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
+import Footer from '../components/Footer';
 
 const AppRouter = () =>{
  
@@ -27,6 +28,7 @@ const AppRouter = () =>{
                 <Route path="/edit/:contentId" element={<Edit/>}/>
                 <Route path="/profile" element={<Profile/>}/>
             </Routes>
+            <Footer/>
         </Router>
     )
 }
