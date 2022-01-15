@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, Paper, TextareaAutosize, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControl, Paper,  TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import logo from "../assets/logo.png";
 import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
@@ -15,7 +15,7 @@ const Register = () => {
         
 
         try{
-            let user = await createUserWithEmailAndPassword(firebase,email,pass)
+            await createUserWithEmailAndPassword(firebase,email,pass)
 
            await updateProfile(firebase.currentUser,{displayName: email})
             console.log(firebase.currentUser.displayName);

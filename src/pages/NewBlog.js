@@ -1,6 +1,6 @@
-import { Box, Button, Container, FormControl, Paper, TextareaAutosize, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, Paper,  TextField, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
 

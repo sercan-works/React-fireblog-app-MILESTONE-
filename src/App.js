@@ -1,19 +1,13 @@
-
-import Navbar from "./components/Navbar";
 import AuthContextProvider from "./contexts/AuthContext";
-import AppRouter from './app-router/Router'
-import { BrowserRouter} from "react-router-dom";
+import AppRouter from "./app-router/Router";
+
 function App() {
   return (
     <>
-    
-   
-    <AuthContextProvider>
-      <AppRouter/>
-    </AuthContextProvider>
-    
+      <AuthContextProvider>
+        <AppRouter />
+      </AuthContextProvider>
     </>
-    
   );
 }
 
