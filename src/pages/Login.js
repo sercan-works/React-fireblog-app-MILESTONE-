@@ -8,7 +8,13 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import { firebase } from "../helpers/firebase";
 import logo from "../assets/logo.png";
 import { toast, ToastContainer } from "react-toastify";
@@ -18,6 +24,34 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
+  const provider = new GoogleAuthProvider();
+
+  const handleSubmitGoogle = () => {
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+        const auth = getAuth();
+        signInWithRedirect(auth, provider);
+        navigate("/");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   const handleSubmit = async () => {
     try {
@@ -40,7 +74,7 @@ const Login = () => {
           sx={{
             flexGrow: 1,
             display: "flex",
-            fontSize:'30px',
+            fontSize: "30px",
             md: "none",
             cursor: "pointer",
             justifyContent: "center",
@@ -80,7 +114,15 @@ const Login = () => {
           <Button variant="contained" sx={{ m: 1 }} onClick={handleSubmit}>
             LOGIN
           </Button>
+          <Button
+            variant="contained"
+            sx={{ m: 1 }}
+            onClick={handleSubmitGoogle}
+          >
+            GOOGLE LOGIN
+          </Button>
         </FormControl>
+
         <Paper
           variant="outlined"
           sx={{ bgcolor: "#b39029", postion: "absolute", width: "5px" }}
